@@ -7,7 +7,7 @@ function App() {
         Coming soon.
       </p>
     </main>
-  )
+  );
 }
 
-export default App
+export default App;
