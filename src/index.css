@@ -1,5 +1,55 @@
 @import "tailwindcss";
 
-:root {
-  color-scheme: light dark;
+@theme {
+  --color-paper: #fefbf0;
+  --color-ink: #1f1b10;
+  --color-brand: #f4c309;
+  --color-brand-deep: #8a6d00;
+  --color-line: #f0e7c8;
+
+  --color-chip-gold: #fbefb3;
+  --color-chip-gold-text: #6e5800;
+  --color-chip-violet: #eee6fb;
+  --color-chip-violet-text: #54398f;
+
+  --font-display:
+    "Bricolage Grotesque Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Atkinson Hyperlegible", ui-sans-serif, system-ui, sans-serif;
+  --font-mono:
+    "JetBrains Mono Variable", ui-monospace, "Cascadia Code", monospace;
+
+  --radius-card: 1.25rem;
+  --shadow-shelf: 0 6px 16px -8px rgb(31 27 16 / 0.25);
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand-deep);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background-color: var(--color-brand);
+    color: var(--color-ink);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
 }
