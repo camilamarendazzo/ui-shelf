@@ -1,8 +1,5 @@
-:root {
-  font-family: system-ui, "Segoe UI", Roboto, sans-serif;
-  color-scheme: light dark;
-}
+@import "tailwindcss";
 
-body {
-  margin: 0;
+:root {
+  color-scheme: light dark;
 }
