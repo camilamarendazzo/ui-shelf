@@ -1,8 +1,11 @@
 {
   "name": "ui-shelf",
+  "description": "The UI Shelf: small, single-purpose tools for frontend developers and designers",
   "private": true,
   "version": "0.0.0",
+  "license": "MIT",
   "type": "module",
+  "packageManager": "pnpm@10.14.0",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
