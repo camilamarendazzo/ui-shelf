@@ -17,7 +17,7 @@ More tools will be added as they ship.
 - [React](https://react.dev/) 19 (with the React Compiler) + [TypeScript](https://www.typescriptlang.org/)
 - [Vite](https://vite.dev/) for dev server and builds
 - [Tailwind CSS](https://tailwindcss.com/) for styling
-- [Vitest](https://vitest.dev/) + [Testing Library](https://testing-library.com/) for tests
+- [Vitest](https://vitest.dev/) for tests
 - [oxlint](https://oxc.rs/docs/guide/usage/linter) + [Prettier](https://prettier.io/) for linting and formatting
 
 All tool logic is 100% client-side; the site deploys as a static bundle.
