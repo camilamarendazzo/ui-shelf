@@ -15,6 +15,7 @@ More tools will be added as they ship.
 ## Stack
 
 - [React](https://react.dev/) 19 (with the React Compiler) + [TypeScript](https://www.typescriptlang.org/)
+- [React Router](https://reactrouter.com/) for client-side routing
 - [Vite](https://vite.dev/) for dev server and builds
 - [Tailwind CSS](https://tailwindcss.com/) for styling
 - [Vitest](https://vitest.dev/) for tests
