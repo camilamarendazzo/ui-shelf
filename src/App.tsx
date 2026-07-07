@@ -1,12 +1,16 @@
+import { Route, Routes } from "react-router";
+import Layout from "./components/Layout";
+import Home from "./pages/Home";
+import NotFound from "./pages/NotFound";
+
 function App() {
   return (
-    <main>
-      <h1>The UI Shelf</h1>
-      <p>
-        Small, single-purpose tools for frontend developers and designers.
-        Coming soon.
-      </p>
-    </main>
+    <Routes>
+      <Route element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="*" element={<NotFound />} />
+      </Route>
+    </Routes>
   );
 }
 
