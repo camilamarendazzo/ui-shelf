@@ -17,7 +17,7 @@ export const tools: Tool[] = [
       "WCAG contrast ratio and AA/AAA pass–fail for a text and background color pair.",
     color: "#CBE84D",
     icon: Contrast,
-    comingSoon: true,
+    route: "/contrast-checker",
   },
   {
     name: "Palette generator",

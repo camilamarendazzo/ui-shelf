@@ -2,12 +2,14 @@ import { Route, Routes } from "react-router";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
+import ContrastChecker from "./tools/contrast-checker/ContrastChecker";
 
 function App() {
   return (
     <Routes>
       <Route element={<Layout />}>
         <Route index element={<Home />} />
+        <Route path="contrast-checker" element={<ContrastChecker />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
