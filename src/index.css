@@ -1,11 +1,18 @@
 @import "tailwindcss";
 
-@theme {
+/* 
+`static` emits every token as a CSS variable even when no utility class uses it.
+Components like Chip read tokens at runtime via var(). 
+*/
+@theme static {
   --color-paper: #fefbf0;
   --color-ink: #1f1b10;
   --color-brand: #f4c309;
   --color-brand-deep: #8a6d00;
   --color-line: #f0e7c8;
+
+  --color-success: #295c0f;
+  --color-error: #a02508;
 
   --color-chip-gold: #fbefb3;
   --color-chip-gold-text: #6e5800;
@@ -26,6 +33,10 @@
 @layer base {
   :root {
     color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
   }
 
   body {

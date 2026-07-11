@@ -12,7 +12,7 @@ function ToolCard({ tool }: { tool: Tool }) {
     <>
       <div className="flex items-start justify-between gap-2">
         <Icon aria-hidden="true" strokeWidth={2.5} />
-        {tool.comingSoon && <Chip className="bg-ink text-paper">Soon</Chip>}
+        {tool.comingSoon && <Chip>Soon</Chip>}
       </div>
       <h2 className="mt-2 font-display text-2xl font-bold">
         {tool.name}
