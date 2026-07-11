@@ -98,6 +98,18 @@ describe("contrastRatio", () => {
     const paper = { r: 254, g: 251, b: 240 };
     expect(contrastRatio(brand, paper)).toBeLessThan(3);
   });
+
+  it("upholds the token contract: ink passes AA on brand gold", () => {
+    const ink = { r: 31, g: 27, b: 16 };
+    const brand = { r: 244, g: 195, b: 9 };
+    expect(contrastRatio(ink, brand)).toBeGreaterThanOrEqual(4.5);
+  });
+
+  it("upholds the token contract: ink passes AA on gold-soft", () => {
+    const ink = { r: 31, g: 27, b: 16 };
+    const goldSoft = { r: 251, g: 239, b: 179 };
+    expect(contrastRatio(ink, goldSoft)).toBeGreaterThanOrEqual(4.5);
+  });
 });
 
 describe("formatRatio", () => {

@@ -11,7 +11,7 @@ function WhyContrastMatters({ accent }: { accent?: string }) {
         </span>
       </h2>
       <div className="mt-6 grid max-w-5xl gap-6 md:grid-cols-3">
-        <div className="rounded-card border-2 border-line bg-chip-gold/40 p-6">
+        <div className="rounded-card border-2 border-line bg-gold-soft/40 p-6">
           <Eye aria-hidden="true" size={28} strokeWidth={2.5} />
           <h3 className="mt-3 font-display text-lg font-bold">
             Readable for everyone
@@ -24,7 +24,7 @@ function WhyContrastMatters({ accent }: { accent?: string }) {
             few.
           </p>
         </div>
-        <div className="rounded-card border-2 border-line bg-chip-violet/40 p-6">
+        <div className="rounded-card border-2 border-line bg-line/30 p-6">
           <Gauge aria-hidden="true" size={28} strokeWidth={2.5} />
           <h3 className="mt-3 font-display text-lg font-bold">
             What the number means
@@ -37,7 +37,7 @@ function WhyContrastMatters({ accent }: { accent?: string }) {
             auditors do.
           </p>
         </div>
-        <div className="rounded-card border-2 border-line bg-success/15 p-6">
+        <div className="rounded-card border-2 border-line bg-gold-soft/40 p-6">
           <BadgeCheck aria-hidden="true" size={28} strokeWidth={2.5} />
           <h3 className="mt-3 font-display text-lg font-bold">
             What AA and AAA mean
