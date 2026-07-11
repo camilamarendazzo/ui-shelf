@@ -4,7 +4,7 @@ import { tools } from "../data/tools";
 function Home() {
   return (
     <section className="py-8 space-y-16">
-      <h1 className="font-display text-lg font-bold sm:text-4xl">
+      <h1 className="font-display text-2xl font-bold sm:text-4xl">
         Pick what you need and{" "}
         <span className="rounded-sm bg-brand px-2">
           take it from the shelf!
