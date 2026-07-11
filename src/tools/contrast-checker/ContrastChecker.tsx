@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { tools } from "../../data/tools";
 import {
   adjustLightnessToPass,
@@ -25,10 +24,6 @@ function ContrastChecker() {
   const suggestedC2 = failing
     ? adjustLightnessToPass(c2.rgb, c1.rgb, AA_NORMAL)
     : null;
-
-  useEffect(() => {
-    document.title = "Contrast checker. The UI Shelf.";
-  }, []);
 
   return (
     <section className="space-y-12 py-4">
