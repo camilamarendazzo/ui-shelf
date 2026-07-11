@@ -7,7 +7,7 @@ Pick what you need and take it from the shelf!
 
 | Tool              | What it does                                                              | Status      |
 | ----------------- | ------------------------------------------------------------------------- | ----------- |
-| Contrast checker  | WCAG contrast ratio and AA/AAA pass–fail for a foreground/background pair | In progress |
+| Contrast checker  | WCAG contrast ratio and AA/AAA pass–fail for a foreground/background pair | Live        |
 | Palette generator | Color harmonies from a base color, with lockable swatches and export      | Coming soon |
 
 More tools will be added as they ship.
