@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  adjustLightnessToPass,
   contrastRatio,
   formatHex,
   formatRatio,
@@ -111,6 +112,37 @@ describe("formatRatio", () => {
 
   it("keeps two decimals when present", () => {
     expect(formatRatio(4.532)).toBe("4.53:1");
+  });
+});
+
+describe("adjustLightnessToPass", () => {
+  it("returns null when the pair already passes the target ratio", () => {
+    expect(adjustLightnessToPass(BLACK, WHITE, 4.5)).toBeNull();
+    expect(adjustLightnessToPass(WHITE, BLACK, 7)).toBeNull();
+  });
+
+  it("darkens a light-gray foreground to pass AA normal against white", () => {
+    const lightGray = { r: 180, g: 180, b: 180 }; // ~2.8:1 against white — fails AA
+    const result = adjustLightnessToPass(lightGray, WHITE, 4.5);
+    expect(result).not.toBeNull();
+    expect(contrastRatio(result!, WHITE)).toBeGreaterThanOrEqual(4.5);
+    expect(rgbToHsl(result!).l).toBeLessThan(rgbToHsl(lightGray).l);
+  });
+
+  it("lightens a dark-gray foreground to pass AA normal against a dark background", () => {
+    const darkGray = { r: 80, g: 80, b: 80 };
+    const darkBg = { r: 30, g: 30, b: 30 };
+    const result = adjustLightnessToPass(darkGray, darkBg, 4.5);
+    expect(result).not.toBeNull();
+    expect(contrastRatio(result!, darkBg)).toBeGreaterThanOrEqual(4.5);
+    expect(rgbToHsl(result!).l).toBeGreaterThan(rgbToHsl(darkGray).l);
+  });
+
+  it("returns null when no lightness can reach the target against a mid-tone background", () => {
+    // #888888 has luminance ~0.216; neither black (~5.9:1) nor white (~3.55:1) reach 7:1
+    const midGray = parseHex("#888888")!;
+    const input = { r: 200, g: 150, b: 100 }; // warm color, low contrast against mid-gray
+    expect(adjustLightnessToPass(input, midGray, 7)).toBeNull();
   });
 });
 

@@ -94,3 +94,56 @@ export function hslToRgb({ h, s, l }: Hsl): Rgb {
   const to255 = (v: number) => Math.round((v + m) * 255);
   return { r: to255(rn), g: to255(gn), b: to255(bn) };
 }
+
+// Returns the L in [lo, hi] closest to the current value where ratioAtL >= targetRatio,
+// or null if even the far extreme doesn't reach the target.
+// "max": finds the highest passing L (darken search, extreme = lo).
+// "min": finds the lowest passing L (lighten search, extreme = hi).
+function searchL(
+  ratioAtL: (l: number) => number,
+  targetRatio: number,
+  lo: number,
+  hi: number,
+  direction: "max" | "min",
+): number | null {
+  const extreme = direction === "max" ? lo : hi;
+  if (ratioAtL(extreme) < targetRatio) return null;
+  let l = lo,
+    h = hi;
+  for (let i = 0; i < 20; i++) {
+    const mid = (l + h) / 2;
+    if (ratioAtL(mid) >= targetRatio) {
+      if (direction === "max") l = mid;
+      else h = mid;
+    } else {
+      if (direction === "max") h = mid;
+      else l = mid;
+    }
+  }
+  return direction === "max" ? l : h;
+}
+
+// Adjusts `color`'s lightness to achieve `targetRatio` against `other`, picking
+// the smallest lightness change. Returns null if already compliant, or if no
+// lightness reaches the target (can happen against mid-tone colors).
+export function adjustLightnessToPass(
+  color: Rgb,
+  other: Rgb,
+  targetRatio: number,
+): Rgb | null {
+  if (contrastRatio(color, other) >= targetRatio) return null;
+
+  const hsl = rgbToHsl(color);
+  const ratioAtL = (l: number) => contrastRatio(hslToRgb({ ...hsl, l }), other);
+
+  const darkL = searchL(ratioAtL, targetRatio, 0, hsl.l, "max");
+  const lightL = searchL(ratioAtL, targetRatio, hsl.l, 1, "min");
+
+  if (darkL === null && lightL === null) return null;
+  if (darkL === null) return hslToRgb({ ...hsl, l: lightL! });
+  if (lightL === null) return hslToRgb({ ...hsl, l: darkL });
+
+  return Math.abs(darkL - hsl.l) <= Math.abs(lightL - hsl.l)
+    ? hslToRgb({ ...hsl, l: darkL })
+    : hslToRgb({ ...hsl, l: lightL });
+}

@@ -1,21 +1,29 @@
 import { formatHex, parseHex } from "../../../lib/color";
 import type { Rgb } from "../../../lib/color";
 
+interface Suggestion {
+  hex: string;
+  onApply: () => void;
+}
+
 function ColorField({
   id,
   label,
   text,
   rgb,
   onChange,
+  suggestion,
 }: {
   id: string;
   label: string;
   text: string;
   rgb: Rgb;
   onChange: (text: string) => void;
+  suggestion?: Suggestion;
 }) {
   const invalid = parseHex(text) === null;
   const hintId = `${id}-hint`;
+  const hasHint = invalid || suggestion !== undefined;
 
   return (
     <div className="flex flex-col gap-1.5">
@@ -38,12 +46,27 @@ function ColorField({
           autoComplete="off"
           spellCheck={false}
           aria-invalid={invalid || undefined}
-          aria-describedby={invalid ? hintId : undefined}
+          aria-describedby={hasHint ? hintId : undefined}
           className="w-32 bg-transparent px-3 py-2 font-mono focus-visible:outline-none"
         />
       </div>
-      <p id={hintId} className="min-h-5 text-sm font-bold text-brand-deep">
-        {invalid ? "Enter 3 or 6 hex digits. Showing last valid color." : ""}
+      <p id={hintId} className="min-h-5" aria-live="polite">
+        {invalid ? (
+          <span className="text-xs text-error">Enter 3 or 6 hex digits</span>
+        ) : suggestion ? (
+          <span className="text-xs text-ink">
+            Try <span className="font-mono">{suggestion.hex}</span>
+            {" · "}
+            <button
+              type="button"
+              onClick={suggestion.onApply}
+              aria-label={`Apply ${suggestion.hex} to ${label}`}
+              className="underline hover:no-underline"
+            >
+              Apply
+            </button>
+          </span>
+        ) : null}
       </p>
     </div>
   );

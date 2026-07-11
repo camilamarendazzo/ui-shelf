@@ -1,6 +1,10 @@
 import { useEffect } from "react";
 import { tools } from "../../data/tools";
-import { contrastRatio } from "../../lib/color";
+import {
+  adjustLightnessToPass,
+  contrastRatio,
+  formatHex,
+} from "../../lib/color";
 import ColorField from "./components/ColorField";
 import ResultPanel from "./components/ResultPanel";
 import Showcase from "./components/Showcase";
@@ -8,10 +12,19 @@ import WhyContrastMatters from "./components/WhyContrastMatters";
 import { useColorPair } from "./useColorPair";
 
 const accent = tools.find((tool) => tool.name === "Contrast checker")?.color;
+const AA_NORMAL = 4.5;
 
 function ContrastChecker() {
   const { c1, c2, updateC1, updateC2 } = useColorPair();
   const ratio = contrastRatio(c1.rgb, c2.rgb);
+
+  const failing = ratio < AA_NORMAL;
+  const suggestedC1 = failing
+    ? adjustLightnessToPass(c1.rgb, c2.rgb, AA_NORMAL)
+    : null;
+  const suggestedC2 = failing
+    ? adjustLightnessToPass(c2.rgb, c1.rgb, AA_NORMAL)
+    : null;
 
   useEffect(() => {
     document.title = "Contrast checker. The UI Shelf.";
@@ -41,6 +54,14 @@ function ContrastChecker() {
                 text={c1.text}
                 rgb={c1.rgb}
                 onChange={updateC1}
+                suggestion={
+                  suggestedC1
+                    ? {
+                        hex: formatHex(suggestedC1),
+                        onApply: () => updateC1(formatHex(suggestedC1)),
+                      }
+                    : undefined
+                }
               />
               <ColorField
                 id="c2"
@@ -48,6 +69,14 @@ function ContrastChecker() {
                 text={c2.text}
                 rgb={c2.rgb}
                 onChange={updateC2}
+                suggestion={
+                  suggestedC2
+                    ? {
+                        hex: formatHex(suggestedC2),
+                        onApply: () => updateC2(formatHex(suggestedC2)),
+                      }
+                    : undefined
+                }
               />
             </div>
           </div>
