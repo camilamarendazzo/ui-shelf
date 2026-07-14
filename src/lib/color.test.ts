@@ -110,6 +110,18 @@ describe("contrastRatio", () => {
     const goldSoft = { r: 251, g: 239, b: 179 };
     expect(contrastRatio(ink, goldSoft)).toBeGreaterThanOrEqual(4.5);
   });
+
+  it("upholds the token contract: success passes AA on paper", () => {
+    const success = { r: 41, g: 92, b: 15 };
+    const paper = { r: 254, g: 251, b: 240 };
+    expect(contrastRatio(success, paper)).toBeGreaterThanOrEqual(4.5);
+  });
+
+  it("upholds the token contract: error passes AA on paper", () => {
+    const error = { r: 160, g: 37, b: 8 };
+    const paper = { r: 254, g: 251, b: 240 };
+    expect(contrastRatio(error, paper)).toBeGreaterThanOrEqual(4.5);
+  });
 });
 
 describe("formatRatio", () => {

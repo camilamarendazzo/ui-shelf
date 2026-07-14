@@ -5,9 +5,7 @@ function Header() {
   const isHome = useLocation().pathname === "/";
 
   return (
-    <header
-      className={isHome ? "bg-brand" : "border-b border-line bg-paper"}
-    >
+    <header className={isHome ? "bg-brand" : "border-b border-line bg-paper"}>
       <div className="mx-auto flex w-full max-w-5xl items-center justify-center px-6 py-4">
         <Link
           to="/"
