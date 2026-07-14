@@ -14,10 +14,7 @@ Components like Chip read tokens at runtime via var().
   --color-success: #295c0f;
   --color-error: #a02508;
 
-  --color-chip-gold: #fbefb3;
-  --color-chip-gold-text: #6e5800;
-  --color-chip-violet: #eee6fb;
-  --color-chip-violet-text: #54398f;
+  --color-gold-soft: #fbefb3;
 
   --font-display:
     "Bricolage Grotesque Variable", ui-sans-serif, system-ui, sans-serif;

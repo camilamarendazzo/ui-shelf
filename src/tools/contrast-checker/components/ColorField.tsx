@@ -54,8 +54,14 @@ function ColorField({
         {invalid ? (
           <span className="text-xs text-error">Enter 3 or 6 hex digits</span>
         ) : suggestion ? (
-          <span className="text-xs text-ink">
-            Try <span className="font-mono">{suggestion.hex}</span>
+          <span className="inline-flex items-center gap-1 text-xs text-ink">
+            Try{" "}
+            <span
+              aria-hidden="true"
+              style={{ backgroundColor: suggestion.hex }}
+              className="inline-block size-3 rounded-full border border-ink/40"
+            />{" "}
+            <span className="font-mono">{suggestion.hex}</span>
             {" · "}
             <button
               type="button"

@@ -26,22 +26,18 @@ function ContrastChecker() {
     : null;
 
   return (
-    <section className="space-y-12 py-4">
+    <section className="space-y-12">
       <header>
         <h1 className="font-display text-3xl font-bold">
           <span className="rounded-sm px-2" style={{ backgroundColor: accent }}>
             Contrast checker
           </span>
         </h1>
-        <p className="mt-3 max-w-prose">
-          Check two colors against the WCAG contrast levels. The colors are
-          saved in the URL, so you can share the result.
-        </p>
       </header>
 
       <div className="grid gap-10 lg:grid-cols-[auto_1fr]">
         <div className="flex flex-col gap-6">
-          <div className="rounded-card border-2 border-line bg-line/30 p-6">
+          <div className="rounded-card border-2 border-line bg-line/30 p-8">
             <div className="flex flex-wrap gap-x-8">
               <ColorField
                 id="c1"

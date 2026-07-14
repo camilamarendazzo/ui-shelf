@@ -7,7 +7,7 @@ function ResultPanel({ ratio }: { ratio: number }) {
   const passCount = levels.filter((level) => ratio >= level.threshold).length;
 
   return (
-    <div className="flex-1 rounded-card border-2 border-ink p-6">
+    <div className="flex-1 rounded-card border-2 border-ink p-8">
       <div className="flex items-start justify-between gap-4">
         <p role="status" className="font-mono text-5xl font-bold">
           {formatRatio(ratio)}
@@ -25,7 +25,7 @@ function ResultPanel({ ratio }: { ratio: number }) {
           <span className="sr-only">What do these results mean?</span>
         </a>
       </div>
-      <ul className="mt-4 grid w-fit grid-cols-2 gap-2">
+      <ul className="mt-4 grid w-fit gap-2 sm:grid-cols-2">
         {levels.map(({ label, threshold }) => {
           const pass = ratio >= threshold;
           return (

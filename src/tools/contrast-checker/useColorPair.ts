@@ -4,7 +4,7 @@ import { formatHex, parseHex } from "../../lib/color";
 import type { Rgb } from "../../lib/color";
 
 const DEFAULT_C1: Rgb = { r: 31, g: 27, b: 16 };
-const DEFAULT_C2: Rgb = { r: 254, g: 251, b: 240 };
+const DEFAULT_C2: Rgb = { r: 244, g: 195, b: 9 };
 
 export interface ColorState {
   text: string;
