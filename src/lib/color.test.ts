@@ -6,6 +6,7 @@ import {
   formatRatio,
   hslToRgb,
   parseHex,
+  randomColor,
   relativeLuminance,
   rgbToHsl,
 } from "./color";
@@ -167,6 +168,17 @@ describe("adjustLightnessToPass", () => {
     const midGray = parseHex("#888888")!;
     const input = { r: 200, g: 150, b: 100 }; // warm color, low contrast against mid-gray
     expect(adjustLightnessToPass(input, midGray, 7)).toBeNull();
+  });
+});
+
+describe("randomColor", () => {
+
+  it("stays in the intended mid lightness band (never near-black or near-white)", () => {
+    for (let i = 0; i < 500; i++) {
+      const { l } = rgbToHsl(randomColor());
+      expect(l).toBeGreaterThanOrEqual(0.35);
+      expect(l).toBeLessThanOrEqual(0.7);
+    }
   });
 });
 

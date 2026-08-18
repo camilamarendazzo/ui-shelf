@@ -95,6 +95,14 @@ export function hslToRgb({ h, s, l }: Hsl): Rgb {
   return { r: to255(rn), g: to255(gn), b: to255(bn) };
 }
 
+// Generates a random full hue range, mid-to-high saturation, mid lightness
+export function randomColor(): Rgb {
+  const h = Math.random() * 360;
+  const s = 0.5 + Math.random() * 0.4; // 0.5–0.9
+  const l = 0.35 + Math.random() * 0.35; // 0.35–0.7
+  return hslToRgb({ h, s, l });
+}
+
 // Returns the L in [lo, hi] closest to the current value where ratioAtL >= targetRatio,
 // or null if even the far extreme doesn't reach the target.
 // "max": finds the highest passing L (darken search, extreme = lo).
