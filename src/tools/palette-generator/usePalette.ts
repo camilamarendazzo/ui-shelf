@@ -18,7 +18,19 @@ export function usePalette() {
   // Lazy initializer so the five colors are rolled once on mount
   const [palette, setPalette] = useState<PaletteSwatch[]>(randomSwatches);
 
-  const randomize = () => setPalette(randomSwatches());
+  const randomize = () =>
+    setPalette((prev) =>
+      prev.map((swatch) =>
+        swatch.locked ? swatch : { rgb: randomColor(), locked: false },
+      ),
+    );
 
-  return { palette, randomize };
+  const toggleLock = (index: number) =>
+    setPalette((prev) =>
+      prev.map((swatch, i) =>
+        i === index ? { ...swatch, locked: !swatch.locked } : swatch,
+      ),
+    );
+
+  return { palette, randomize, toggleLock };
 }

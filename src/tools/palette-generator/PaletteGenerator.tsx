@@ -6,7 +6,7 @@ import { usePalette } from "./usePalette";
 const accent = tools.find((tool) => tool.name === "Palette generator")?.color;
 
 function PaletteGenerator() {
-  const { palette, randomize } = usePalette();
+  const { palette, randomize, toggleLock } = usePalette();
 
   return (
     <section className="space-y-12">
@@ -29,7 +29,11 @@ function PaletteGenerator() {
       <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
         {palette.map((swatch, i) => (
           <li key={i}>
-            <Swatch rgb={swatch.rgb} />
+            <Swatch
+              rgb={swatch.rgb}
+              locked={swatch.locked}
+              onToggleLock={() => toggleLock(i)}
+            />
           </li>
         ))}
       </ul>

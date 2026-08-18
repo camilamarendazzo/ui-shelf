@@ -41,6 +41,10 @@ Components like Chip read tokens at runtime via var().
     color: var(--color-ink);
   }
 
+  button {
+    cursor: pointer;
+  }
+
   :focus-visible {
     outline: 2px solid var(--color-brand-deep);
     outline-offset: 2px;

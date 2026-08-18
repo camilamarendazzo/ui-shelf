@@ -173,10 +173,13 @@ describe("adjustLightnessToPass", () => {
 
 describe("randomColor", () => {
   it("stays in the intended mid lightness band (never near-black or near-white)", () => {
+    // Rounding to 8-bit channels and back can shift lightness by up to ~1/255,
+    // so allow that quantization slack around the 0.35–0.7 generation band.
+    const epsilon = 1 / 255;
     for (let i = 0; i < 500; i++) {
       const { l } = rgbToHsl(randomColor());
-      expect(l).toBeGreaterThanOrEqual(0.35);
-      expect(l).toBeLessThanOrEqual(0.7);
+      expect(l).toBeGreaterThanOrEqual(0.35 - epsilon);
+      expect(l).toBeLessThanOrEqual(0.7 + epsilon);
     }
   });
 });
