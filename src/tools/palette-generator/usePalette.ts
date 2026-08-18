@@ -32,5 +32,10 @@ export function usePalette() {
       ),
     );
 
-  return { palette, randomize, toggleLock };
+  const setColor = (index: number, rgb: Rgb) =>
+    setPalette((prev) =>
+      prev.map((swatch, i) => (i === index ? { ...swatch, rgb } : swatch)),
+    );
+
+  return { palette, randomize, toggleLock, setColor };
 }

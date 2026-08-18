@@ -6,7 +6,7 @@ import { usePalette } from "./usePalette";
 const accent = tools.find((tool) => tool.name === "Palette generator")?.color;
 
 function PaletteGenerator() {
-  const { palette, randomize, toggleLock } = usePalette();
+  const { palette, randomize, toggleLock, setColor } = usePalette();
 
   return (
     <section className="space-y-12">
@@ -33,6 +33,7 @@ function PaletteGenerator() {
               rgb={swatch.rgb}
               locked={swatch.locked}
               onToggleLock={() => toggleLock(i)}
+              onChange={(rgb) => setColor(i, rgb)}
             />
           </li>
         ))}
