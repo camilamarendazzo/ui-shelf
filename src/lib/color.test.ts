@@ -172,7 +172,6 @@ describe("adjustLightnessToPass", () => {
 });
 
 describe("randomColor", () => {
-
   it("stays in the intended mid lightness band (never near-black or near-white)", () => {
     for (let i = 0; i < 500; i++) {
       const { l } = rgbToHsl(randomColor());

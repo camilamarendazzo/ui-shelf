@@ -7,11 +7,18 @@ export interface PaletteSwatch {
   locked: boolean;
 }
 
+function randomSwatches(): PaletteSwatch[] {
+  return Array.from({ length: 5 }, () => ({
+    rgb: randomColor(),
+    locked: false,
+  }));
+}
+
 export function usePalette() {
   // Lazy initializer so the five colors are rolled once on mount
-  const [palette] = useState<PaletteSwatch[]>(() =>
-    Array.from({ length: 5 }, () => ({ rgb: randomColor(), locked: false })),
-  );
+  const [palette, setPalette] = useState<PaletteSwatch[]>(randomSwatches);
 
-  return { palette };
+  const randomize = () => setPalette(randomSwatches());
+
+  return { palette, randomize };
 }
