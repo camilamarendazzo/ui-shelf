@@ -3,7 +3,9 @@ import {
   adjustLightnessToPass,
   contrastRatio,
   formatHex,
+  formatHsl,
   formatRatio,
+  formatRgb,
   hslToRgb,
   parseHex,
   randomColor,
@@ -48,6 +50,21 @@ describe("formatHex", () => {
   it("round-trips through parseHex", () => {
     const color = { r: 244, g: 195, b: 9 };
     expect(parseHex(formatHex(color))).toEqual(color);
+  });
+});
+
+describe("formatRgb", () => {
+  it("formats channels as a CSS rgb() string", () => {
+    expect(formatRgb({ r: 255, g: 153, b: 133 })).toBe("rgb(255, 153, 133)");
+    expect(formatRgb(BLACK)).toBe("rgb(0, 0, 0)");
+  });
+});
+
+describe("formatHsl", () => {
+  it("rounds to whole degrees and percentages", () => {
+    expect(formatHsl({ r: 255, g: 0, b: 0 })).toBe("hsl(0, 100%, 50%)");
+    expect(formatHsl(WHITE)).toBe("hsl(0, 0%, 100%)");
+    expect(formatHsl({ r: 128, g: 128, b: 128 })).toBe("hsl(0, 0%, 50%)");
   });
 });
 

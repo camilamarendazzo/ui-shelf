@@ -1,12 +1,16 @@
 import { Shuffle } from "lucide-react";
+import { useState } from "react";
 import { tools } from "../../data/tools";
+import FormatToggle from "./components/FormatToggle";
 import Swatch from "./components/Swatch";
+import type { ColorFormat } from "./format";
 import { usePalette } from "./usePalette";
 
 const accent = tools.find((tool) => tool.name === "Palette generator")?.color;
 
 function PaletteGenerator() {
   const { palette, randomize, toggleLock, setColor } = usePalette();
+  const [format, setFormat] = useState<ColorFormat>("hex");
 
   return (
     <section className="space-y-12">
@@ -26,12 +30,17 @@ function PaletteGenerator() {
         </button>
       </header>
 
+      <div className="flex flex-wrap items-center gap-4">
+        <FormatToggle value={format} onChange={setFormat} />
+      </div>
+
       <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
         {palette.map((swatch, i) => (
           <li key={i}>
             <Swatch
               rgb={swatch.rgb}
               locked={swatch.locked}
+              format={format}
               onToggleLock={() => toggleLock(i)}
               onChange={(rgb) => setColor(i, rgb)}
             />

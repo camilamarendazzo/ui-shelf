@@ -34,6 +34,15 @@ export function formatHex({ r, g, b }: Rgb): string {
   return `#${channel(r)}${channel(g)}${channel(b)}`;
 }
 
+export function formatRgb({ r, g, b }: Rgb): string {
+  return `rgb(${r}, ${g}, ${b})`;
+}
+
+export function formatHsl(rgb: Rgb): string {
+  const { h, s, l } = rgbToHsl(rgb);
+  return `hsl(${Math.round(h)}, ${Math.round(s * 100)}%, ${Math.round(l * 100)}%)`;
+}
+
 // WCAG 2.x relative luminance (SC 1.4.3).
 // The WCAG 2.2 errata threshold 0.04045 gives bit-identical results for 8-bit channels
 // (no value falls between 10/255 and 11/255), so the published 0.03928 is kept.
