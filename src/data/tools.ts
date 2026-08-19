@@ -30,7 +30,7 @@ export const tools: Tool[] = [
   {
     name: "Color blindness simulator",
     description:
-      "Preview colors and palettes under protanopia, deuteranopia, and tritanopia.",
+      "Preview colors under protanopia, deuteranopia, and tritanopia.",
     color: "#8FD3E8",
     icon: Eye,
     comingSoon: true,
