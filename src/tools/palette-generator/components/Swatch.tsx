@@ -32,7 +32,7 @@ function Swatch({
 
   return (
     <div
-      className={`flex min-h-44 flex-col justify-between rounded-card border-2 border-ink p-4 ${textColor}`}
+      className={`flex flex-1 items-center justify-between gap-2 p-3 sm:flex-col sm:items-stretch sm:justify-between sm:p-4 ${textColor}`}
       style={{ backgroundColor: hex }}
     >
       <div className="flex items-center justify-between">

@@ -11,7 +11,7 @@ function PaletteGenerator() {
   useShuffleShortcut(randomize);
 
   return (
-    <section className="space-y-12">
+    <section className="flex min-h-0 flex-1 flex-col gap-8">
       <PaletteHeader
         palette={palette}
         format={format}
@@ -19,9 +19,9 @@ function PaletteGenerator() {
         onShuffle={randomize}
       />
 
-      <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+      <ul className="flex min-h-0 flex-1 flex-col sm:flex-row">
         {palette.map((swatch, i) => (
-          <li key={i}>
+          <li key={i} className="flex min-h-0 min-w-0 flex-1 flex-col">
             <Swatch
               rgb={swatch.rgb}
               locked={swatch.locked}
