@@ -1,4 +1,4 @@
-import { Check, Copy, Lock, Unlock } from "lucide-react";
+import { Check, Copy, Lock, Unlock, X } from "lucide-react";
 import { formatHex, parseHex } from "../../../lib/color";
 import type { Rgb } from "../../../lib/color";
 import { relativeLuminance } from "../../../lib/contrast";
@@ -10,14 +10,18 @@ function Swatch({
   rgb,
   locked,
   format,
+  removable,
   onToggleLock,
   onChange,
+  onRemove,
 }: {
   rgb: Rgb;
   locked: boolean;
   format: ColorFormat;
+  removable: boolean;
   onToggleLock: () => void;
   onChange: (rgb: Rgb) => void;
+  onRemove: () => void;
 }) {
   const hex = formatHex(rgb);
   const value = formatColor(rgb, format);
@@ -32,10 +36,10 @@ function Swatch({
 
   return (
     <div
-      className={`flex flex-1 items-center justify-between gap-2 p-3 sm:flex-col sm:items-stretch sm:justify-between sm:p-4 ${textColor}`}
+      className={`group flex flex-1 items-center justify-between gap-2 p-3 sm:flex-col sm:items-stretch sm:justify-between sm:p-4 ${textColor}`}
       style={{ backgroundColor: hex }}
     >
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-end opacity-0 group-hover:opacity-100 group-focus-within:opacity-100">
         <button
           type="button"
           onClick={() => copy(value)}
@@ -57,6 +61,16 @@ function Swatch({
         >
           <LockIcon aria-hidden="true" size={18} strokeWidth={2.5} />
         </button>
+        {removable && (
+          <button
+            type="button"
+            onClick={onRemove}
+            aria-label={`Remove ${hex}`}
+            className={iconButton}
+          >
+            <X aria-hidden="true" size={18} strokeWidth={2.5} />
+          </button>
+        )}
       </div>
 
       <label className="group w-fit cursor-pointer rounded-sm px-2 hover:bg-ink/10 focus-within:bg-ink/10">

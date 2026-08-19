@@ -8,10 +8,12 @@ export interface PaletteSwatch {
   locked: boolean;
 }
 
-const COUNT = 5;
+export const MIN_SWATCHES = 3;
+export const MAX_SWATCHES = 6;
+const DEFAULT_COUNT = 5;
 
 function randomSwatches(): PaletteSwatch[] {
-  return generatePalette("random", COUNT).map((rgb) => ({
+  return generatePalette("random", DEFAULT_COUNT).map((rgb) => ({
     rgb,
     locked: false,
   }));
@@ -50,6 +52,19 @@ export function usePalette() {
       prev.map((swatch, i) => (i === index ? { ...swatch, rgb } : swatch)),
     );
 
+  const addSwatch = () =>
+    setPalette((prev) => {
+      if (prev.length >= MAX_SWATCHES) return prev;
+      const base = (prev.find((swatch) => swatch.locked) ?? prev[0])?.rgb;
+      const generated = generatePalette(combination, prev.length + 1, base);
+      return [...prev, { rgb: generated[prev.length], locked: false }];
+    });
+
+  const removeSwatch = (index: number) =>
+    setPalette((prev) =>
+      prev.length <= MIN_SWATCHES ? prev : prev.filter((_, i) => i !== index),
+    );
+
   return {
     palette,
     combination,
@@ -57,5 +72,7 @@ export function usePalette() {
     setCombination,
     toggleLock,
     setColor,
+    addSwatch,
+    removeSwatch,
   };
 }

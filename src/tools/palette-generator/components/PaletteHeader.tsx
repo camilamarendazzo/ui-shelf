@@ -1,4 +1,4 @@
-import { Shuffle } from "lucide-react";
+import { Plus, Shuffle } from "lucide-react";
 import Select from "../../../components/ui/Select";
 import { tools } from "../../../data/tools";
 import { COMBINATION_OPTIONS } from "../combinations";
@@ -15,16 +15,20 @@ function PaletteHeader({
   palette,
   format,
   combination,
+  canAdd,
   onFormatChange,
   onCombinationChange,
   onShuffle,
+  onAddColor,
 }: {
   palette: PaletteSwatch[];
   format: ColorFormat;
   combination: Combination;
+  canAdd: boolean;
   onFormatChange: (format: ColorFormat) => void;
   onCombinationChange: (combination: Combination) => void;
   onShuffle: () => void;
+  onAddColor: () => void;
 }) {
   const cssVariables = palette
     .map((swatch, i) => `--color-${i + 1}: ${formatColor(swatch.rgb, format)};`)
@@ -47,6 +51,16 @@ function PaletteHeader({
           onChange={onCombinationChange}
           className="w-44"
         />
+        <button
+          type="button"
+          onClick={onAddColor}
+          disabled={!canAdd}
+          aria-label="Add color"
+          className="inline-flex items-center gap-2 rounded-card border-2 border-ink bg-paper px-3 py-2 text-sm font-bold text-ink transition hover:bg-line disabled:cursor-not-allowed disabled:opacity-40"
+        >
+          <Plus aria-hidden="true" size={16} strokeWidth={2.5} />
+          Add
+        </button>
         <div className="space-y-2">
           <button
             type="button"
