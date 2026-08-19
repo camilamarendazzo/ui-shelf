@@ -6,7 +6,14 @@ import { usePalette } from "./usePalette";
 import { useShuffleShortcut } from "./useShuffleShortcut";
 
 function PaletteGenerator() {
-  const { palette, randomize, toggleLock, setColor } = usePalette();
+  const {
+    palette,
+    combination,
+    randomize,
+    setCombination,
+    toggleLock,
+    setColor,
+  } = usePalette();
   const [format, setFormat] = useState<ColorFormat>("hex");
   useShuffleShortcut(randomize);
 
@@ -15,7 +22,9 @@ function PaletteGenerator() {
       <PaletteHeader
         palette={palette}
         format={format}
+        combination={combination}
         onFormatChange={setFormat}
+        onCombinationChange={setCombination}
         onShuffle={randomize}
       />
 

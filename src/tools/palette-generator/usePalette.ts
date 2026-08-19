@@ -1,29 +1,42 @@
 import { useState } from "react";
-import { randomColor } from "../../lib/color";
 import type { Rgb } from "../../lib/color";
+import { generatePalette } from "./combinations";
+import type { Combination } from "./combinations";
 
 export interface PaletteSwatch {
   rgb: Rgb;
   locked: boolean;
 }
 
+const COUNT = 5;
+
 function randomSwatches(): PaletteSwatch[] {
-  return Array.from({ length: 5 }, () => ({
-    rgb: randomColor(),
+  return generatePalette("random", COUNT).map((rgb) => ({
+    rgb,
     locked: false,
   }));
 }
 
 export function usePalette() {
-  // Lazy initializer so the five colors are rolled once on mount
+  // Lazy initializer so the colors are rolled once on mount
   const [palette, setPalette] = useState<PaletteSwatch[]>(randomSwatches);
+  const [combination, setCombinationState] = useState<Combination>("random");
 
-  const randomize = () =>
-    setPalette((prev) =>
-      prev.map((swatch) =>
-        swatch.locked ? swatch : { rgb: randomColor(), locked: false },
-      ),
-    );
+  const regenerate = (combo: Combination) =>
+    setPalette((prev) => {
+      const base = prev.find((swatch) => swatch.locked)?.rgb;
+      const generated = generatePalette(combo, prev.length, base);
+      return prev.map((swatch, i) =>
+        swatch.locked ? swatch : { rgb: generated[i], locked: false },
+      );
+    });
+
+  const randomize = () => regenerate(combination);
+
+  const setCombination = (combo: Combination) => {
+    setCombinationState(combo);
+    regenerate(combo);
+  };
 
   const toggleLock = (index: number) =>
     setPalette((prev) =>
@@ -37,5 +50,12 @@ export function usePalette() {
       prev.map((swatch, i) => (i === index ? { ...swatch, rgb } : swatch)),
     );
 
-  return { palette, randomize, toggleLock, setColor };
+  return {
+    palette,
+    combination,
+    randomize,
+    setCombination,
+    toggleLock,
+    setColor,
+  };
 }

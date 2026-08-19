@@ -1,5 +1,8 @@
 import { Shuffle } from "lucide-react";
+import Select from "../../../components/Select";
 import { tools } from "../../../data/tools";
+import { COMBINATION_OPTIONS } from "../combinations";
+import type { Combination } from "../combinations";
 import { formatColor } from "../format";
 import type { ColorFormat } from "../format";
 import type { PaletteSwatch } from "../usePalette";
@@ -11,12 +14,16 @@ const accent = tools.find((tool) => tool.name === "Palette generator")?.color;
 function PaletteHeader({
   palette,
   format,
+  combination,
   onFormatChange,
+  onCombinationChange,
   onShuffle,
 }: {
   palette: PaletteSwatch[];
   format: ColorFormat;
+  combination: Combination;
   onFormatChange: (format: ColorFormat) => void;
+  onCombinationChange: (combination: Combination) => void;
   onShuffle: () => void;
 }) {
   const cssVariables = palette
@@ -33,6 +40,13 @@ function PaletteHeader({
       <div className="flex flex-wrap items-start gap-3">
         <CopyButton text={cssVariables} label="Copy CSS variables" />
         <FormatToggle value={format} onChange={onFormatChange} />
+        <Select
+          label="Color combination"
+          value={combination}
+          options={COMBINATION_OPTIONS}
+          onChange={onCombinationChange}
+          className="w-44"
+        />
         <div className="space-y-2">
           <button
             type="button"
