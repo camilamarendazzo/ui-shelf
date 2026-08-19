@@ -1,10 +1,10 @@
 import { Check, Copy, Lock, Unlock } from "lucide-react";
-import { useEffect, useState } from "react";
 import { formatHex, parseHex } from "../../../lib/color";
 import type { Rgb } from "../../../lib/color";
 import { relativeLuminance } from "../../../lib/contrast";
 import { formatColor } from "../format";
 import type { ColorFormat } from "../format";
+import { useCopy } from "../useCopy";
 
 function Swatch({
   rgb,
@@ -25,20 +25,7 @@ function Swatch({
   const textColor = onLightColor ? "text-ink" : "text-paper";
   const LockIcon = locked ? Lock : Unlock;
 
-  const [copied, setCopied] = useState(false);
-
-  useEffect(() => {
-    if (!copied) return;
-    const timer = setTimeout(() => setCopied(false), 1500);
-    return () => clearTimeout(timer);
-  }, [copied]);
-
-  const copy = () => {
-    navigator.clipboard.writeText(value).then(
-      () => setCopied(true),
-      () => {}, // clipboard unavailable — ignore
-    );
-  };
+  const { copied, copy } = useCopy();
 
   const iconButton =
     "rounded-full p-2 transition hover:bg-ink/10 focus-visible:bg-ink/10";
@@ -51,7 +38,7 @@ function Swatch({
       <div className="flex items-center justify-between">
         <button
           type="button"
-          onClick={copy}
+          onClick={() => copy(value)}
           aria-label={`Copy ${value}`}
           className={iconButton}
         >

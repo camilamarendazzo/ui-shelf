@@ -22,7 +22,7 @@ function FormatToggle({
             type="button"
             onClick={() => onChange(format)}
             aria-pressed={active}
-            className={`px-3 py-1.5 font-mono text-xs font-bold uppercase transition ${
+            className={`px-3 py-2 font-mono text-sm font-bold uppercase transition ${
               active ? "bg-ink text-paper" : "bg-paper text-ink hover:bg-line"
             }`}
           >
