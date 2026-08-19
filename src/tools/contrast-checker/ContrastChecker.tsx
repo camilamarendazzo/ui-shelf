@@ -1,9 +1,6 @@
 import { tools } from "../../data/tools";
-import {
-  adjustLightnessToPass,
-  contrastRatio,
-  formatHex,
-} from "../../lib/color";
+import { formatHex } from "../../lib/color";
+import { adjustLightnessToPass, contrastRatio } from "../../lib/contrast";
 import ColorField from "./components/ColorField";
 import ResultPanel from "./components/ResultPanel";
 import Showcase from "./components/Showcase";
