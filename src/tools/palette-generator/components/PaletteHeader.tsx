@@ -1,5 +1,5 @@
 import { Shuffle } from "lucide-react";
-import Select from "../../../components/Select";
+import Select from "../../../components/ui/Select";
 import { tools } from "../../../data/tools";
 import { COMBINATION_OPTIONS } from "../combinations";
 import type { Combination } from "../combinations";

@@ -2,7 +2,7 @@ import { useState } from "react";
 import type { CSSProperties, PointerEvent } from "react";
 import { Link } from "react-router";
 import type { Tool } from "../data/tools";
-import Chip from "./Chip";
+import Chip from "./ui/Chip";
 
 function ToolCard({ tool }: { tool: Tool }) {
   const [cursor, setCursor] = useState<{ x: number; y: number } | null>(null);
