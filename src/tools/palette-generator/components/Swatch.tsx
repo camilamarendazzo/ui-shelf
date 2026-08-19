@@ -1,7 +1,8 @@
 import { Check, Copy, Lock, Unlock } from "lucide-react";
 import { useEffect, useState } from "react";
-import { formatHex, parseHex, relativeLuminance } from "../../../lib/color";
+import { formatHex, parseHex } from "../../../lib/color";
 import type { Rgb } from "../../../lib/color";
+import { relativeLuminance } from "../../../lib/contrast";
 import { formatColor } from "../format";
 import type { ColorFormat } from "../format";
 
