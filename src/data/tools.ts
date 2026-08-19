@@ -1,4 +1,4 @@
-import { Contrast, Palette } from "lucide-react";
+import { Contrast, Eye, Palette } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 export interface Tool {
@@ -22,9 +22,17 @@ export const tools: Tool[] = [
   {
     name: "Palette generator",
     description:
-      "Color harmonies from a base color, with lockable swatches and export.",
+      "Explore different combinations and create unique color palettes.",
     color: "#FF9985",
     icon: Palette,
+    route: "/palette-generator",
+  },
+  {
+    name: "Color blindness simulator",
+    description:
+      "Preview colors and palettes under protanopia, deuteranopia, and tritanopia.",
+    color: "#8FD3E8",
+    icon: Eye,
     comingSoon: true,
   },
 ];
