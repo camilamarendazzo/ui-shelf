@@ -24,7 +24,7 @@ Components like Chip read tokens at runtime via var().
 
   --radius-card: 1.25rem;
   --shadow-shelf: 0 6px 16px -8px rgb(31 27 16 / 0.25);
-  --shadow-pop: 4px 5px 0 0 var(--color-ink);
+  --shadow-pop: 2px 3px 0 0 var(--color-ink);
 }
 
 @layer base {
