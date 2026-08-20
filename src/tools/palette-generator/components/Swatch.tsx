@@ -1,4 +1,4 @@
-import { Check, Copy, Lock, Unlock } from "lucide-react";
+import { Check, Copy, Lock, Unlock, X } from "lucide-react";
 import { formatHex, parseHex } from "../../../lib/color";
 import type { Rgb } from "../../../lib/color";
 import { relativeLuminance } from "../../../lib/contrast";
@@ -10,14 +10,18 @@ function Swatch({
   rgb,
   locked,
   format,
+  removable,
   onToggleLock,
   onChange,
+  onRemove,
 }: {
   rgb: Rgb;
   locked: boolean;
   format: ColorFormat;
+  removable: boolean;
   onToggleLock: () => void;
   onChange: (rgb: Rgb) => void;
+  onRemove: () => void;
 }) {
   const hex = formatHex(rgb);
   const value = formatColor(rgb, format);
@@ -32,10 +36,10 @@ function Swatch({
 
   return (
     <div
-      className={`flex min-h-44 flex-col justify-between rounded-card border-2 border-ink p-4 ${textColor}`}
+      className={`group/swatch flex flex-1 items-center justify-between gap-2 p-3 sm:flex-col sm:items-stretch sm:justify-between sm:p-4 ${textColor}`}
       style={{ backgroundColor: hex }}
     >
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-end opacity-100 sm:opacity-0 sm:group-hover/swatch:opacity-100 sm:group-focus-within/swatch:opacity-100">
         <button
           type="button"
           onClick={() => copy(value)}
@@ -57,10 +61,20 @@ function Swatch({
         >
           <LockIcon aria-hidden="true" size={18} strokeWidth={2.5} />
         </button>
+        {removable && (
+          <button
+            type="button"
+            onClick={onRemove}
+            aria-label={`Remove ${hex}`}
+            className={iconButton}
+          >
+            <X aria-hidden="true" size={18} strokeWidth={2.5} />
+          </button>
+        )}
       </div>
 
-      <label className="group w-fit cursor-pointer rounded-sm px-2 hover:bg-ink/10 focus-within:bg-ink/10">
-        <span className="font-mono text-sm font-bold uppercase group-hover:underline">
+      <label className="group/value w-fit cursor-pointer rounded-sm px-2 hover:bg-ink/10 focus-within:bg-ink/10 focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-current">
+        <span className="font-mono text-sm font-bold uppercase group-hover/value:underline">
           {value}
         </span>
         <input

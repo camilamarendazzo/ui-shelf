@@ -1,5 +1,5 @@
 import { CircleHelp } from "lucide-react";
-import Chip from "../../../components/Chip";
+import Chip from "../../../components/ui/Chip";
 import { formatRatio } from "../../../lib/contrast";
 import { levels } from "../levels";
 
