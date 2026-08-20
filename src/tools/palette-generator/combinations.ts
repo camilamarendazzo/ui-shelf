@@ -4,8 +4,8 @@ import type { Rgb } from "../../lib/color";
 export const COMBINATIONS = [
   "random",
   "complementary",
-  "analogous",
   "triadic",
+  "analogous",
   "monochromatic",
 ] as const;
 

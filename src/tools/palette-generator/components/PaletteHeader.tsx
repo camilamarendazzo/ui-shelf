@@ -71,7 +71,7 @@ function PaletteHeader({
             <Shuffle aria-hidden="true" size={16} strokeWidth={2.5} />
             Shuffle
           </button>
-          <p className="text-sm text-ink/60">
+          <p className="text-sm text-ink/70">
             or press{" "}
             <kbd className="rounded border border-ink/30 bg-line/50 px-1 py-0.5 font-mono text-xs">
               Space
