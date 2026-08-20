@@ -5,10 +5,11 @@ Pick what you need and take it from the shelf!
 
 ## Tools
 
-| Tool              | What it does                                                              | Status      |
-| ----------------- | ------------------------------------------------------------------------- | ----------- |
-| Contrast checker  | WCAG contrast ratio and AA/AAA pass–fail for a foreground/background pair | Live        |
-| Palette generator | Color harmonies from a base color, with lockable swatches and export      | Coming soon |
+| Tool                      | What it does                                                                                 | Status      |
+| ------------------------- | -------------------------------------------------------------------------------------------- | ----------- |
+| Contrast checker          | WCAG contrast ratio and AA/AAA pass–fail for a foreground/background pair                    | Live        |
+| Palette generator         | Generate color palettes and combinations, lock and edit swatches, copy as HEX/RGB/HSL or CSS | Live        |
+| Color blindness simulator | Preview colors under protanopia, deuteranopia, and tritanopia                                | Coming soon |
 
 More tools will be added as they ship.
 
