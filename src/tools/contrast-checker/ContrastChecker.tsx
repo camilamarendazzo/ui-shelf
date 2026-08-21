@@ -1,6 +1,10 @@
 import { tools } from "../../data/tools";
 import { formatHex } from "../../lib/color";
-import { adjustLightnessToPass, contrastRatio } from "../../lib/contrast";
+import {
+  adjustLightnessToPass,
+  contrastRatio,
+  WCAG_AA_NORMAL,
+} from "../../lib/contrast";
 import ColorField from "./components/ColorField";
 import ResultPanel from "./components/ResultPanel";
 import Showcase from "./components/Showcase";
@@ -8,18 +12,17 @@ import WhyContrastMatters from "./components/WhyContrastMatters";
 import { useColorPair } from "./useColorPair";
 
 const accent = tools.find((tool) => tool.name === "Contrast checker")?.color;
-const AA_NORMAL = 4.5;
 
 function ContrastChecker() {
   const { c1, c2, updateC1, updateC2 } = useColorPair();
   const ratio = contrastRatio(c1.rgb, c2.rgb);
 
-  const failing = ratio < AA_NORMAL;
+  const failing = ratio < WCAG_AA_NORMAL;
   const suggestedC1 = failing
-    ? adjustLightnessToPass(c1.rgb, c2.rgb, AA_NORMAL)
+    ? adjustLightnessToPass(c1.rgb, c2.rgb, WCAG_AA_NORMAL)
     : null;
   const suggestedC2 = failing
-    ? adjustLightnessToPass(c2.rgb, c1.rgb, AA_NORMAL)
+    ? adjustLightnessToPass(c2.rgb, c1.rgb, WCAG_AA_NORMAL)
     : null;
 
   return (
