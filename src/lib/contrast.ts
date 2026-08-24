@@ -1,6 +1,12 @@
 import { hslToRgb, rgbToHsl } from "./color";
 import type { Rgb } from "./color";
 
+// WCAG 2.x minimum contrast ratios
+export const WCAG_AA_NORMAL = 4.5;
+export const WCAG_AA_LARGE = 3;
+export const WCAG_AAA_NORMAL = 7;
+export const WCAG_AAA_LARGE = 4.5;
+
 // WCAG 2.x relative luminance (SC 1.4.3).
 // The WCAG 2.2 errata threshold 0.04045 gives bit-identical results for 8-bit channels
 // (no value falls between 10/255 and 11/255), so the published 0.03928 is kept.

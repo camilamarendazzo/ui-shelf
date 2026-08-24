@@ -1,5 +1,5 @@
-import ToolCard from "../components/ToolCard";
-import { tools } from "../data/tools";
+import ToolCard from "@/components/ToolCard";
+import { tools } from "@/data/tools";
 
 function Home() {
   return (

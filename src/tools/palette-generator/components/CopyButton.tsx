@@ -1,5 +1,5 @@
 import { Check, Copy } from "lucide-react";
-import { useCopy } from "../useCopy";
+import { useCopy } from "../hooks/useCopy";
 
 function CopyButton({ text, label }: { text: string; label: string }) {
   const { copied, copy } = useCopy();

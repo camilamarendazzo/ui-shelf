@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { CSSProperties, PointerEvent } from "react";
 import { Link } from "react-router";
-import type { Tool } from "../data/tools";
+import type { Tool } from "@/data/tools";
 import Chip from "./ui/Chip";
 
 function ToolCard({ tool }: { tool: Tool }) {

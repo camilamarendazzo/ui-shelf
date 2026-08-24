@@ -1,5 +1,5 @@
 import { BadgeCheck, Eye, Gauge } from "lucide-react";
-import Chip from "../../../components/ui/Chip";
+import Chip from "@/components/ui/Chip";
 
 function WhyContrastMatters({ accent }: { accent?: string }) {
   return (

@@ -1,5 +1,5 @@
-import { formatHex } from "../../../lib/color";
-import type { Rgb } from "../../../lib/color";
+import { formatHex } from "@/lib/color";
+import type { Rgb } from "@/lib/color";
 
 function Showcase({
   caption,

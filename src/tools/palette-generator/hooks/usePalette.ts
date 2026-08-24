@@ -1,7 +1,7 @@
 import { useState } from "react";
-import type { Rgb } from "../../lib/color";
-import { generatePalette } from "./combinations";
-import type { Combination } from "./combinations";
+import type { Rgb } from "@/lib/color";
+import { generatePalette } from "../combinations";
+import type { Combination } from "../combinations";
 
 export interface PaletteSwatch {
   rgb: Rgb;

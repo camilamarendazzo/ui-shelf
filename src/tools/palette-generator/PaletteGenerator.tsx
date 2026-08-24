@@ -2,8 +2,8 @@ import { useState } from "react";
 import PaletteHeader from "./components/PaletteHeader";
 import Swatch from "./components/Swatch";
 import type { ColorFormat } from "./format";
-import { MAX_SWATCHES, MIN_SWATCHES, usePalette } from "./usePalette";
-import { useShuffleShortcut } from "./useShuffleShortcut";
+import { MAX_SWATCHES, MIN_SWATCHES, usePalette } from "./hooks/usePalette";
+import { useShuffleShortcut } from "./hooks/useShuffleShortcut";
 
 function PaletteGenerator() {
   const {

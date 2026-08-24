@@ -1,5 +1,5 @@
-import { hslToRgb, randomColor, rgbToHsl } from "../../lib/color";
-import type { Rgb } from "../../lib/color";
+import { hslToRgb, randomColor, rgbToHsl } from "@/lib/color";
+import type { Rgb } from "@/lib/color";
 
 export const COMBINATIONS = [
   "random",
