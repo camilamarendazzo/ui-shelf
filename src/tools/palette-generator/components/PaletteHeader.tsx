@@ -1,6 +1,6 @@
 import { Plus, Shuffle } from "lucide-react";
-import Select from "../../../components/ui/Select";
-import { tools } from "../../../data/tools";
+import Select from "@/components/ui/Select";
+import { tools } from "@/data/tools";
 import { COMBINATION_OPTIONS } from "../combinations";
 import type { Combination } from "../combinations";
 import { formatColor } from "../format";

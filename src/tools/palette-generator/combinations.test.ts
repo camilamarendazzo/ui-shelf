@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { rgbToHsl } from "../../lib/color";
-import type { Rgb } from "../../lib/color";
+import { rgbToHsl } from "@/lib/color";
+import type { Rgb } from "@/lib/color";
 import { COMBINATIONS, generatePalette } from "./combinations";
 
 const BASE: Rgb = { r: 220, g: 40, b: 40 }; // a saturated red, base hue ~0

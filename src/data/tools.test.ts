@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { parseHex } from "../lib/color";
-import { contrastRatio } from "../lib/contrast";
+import { parseHex } from "@/lib/color";
+import { contrastRatio } from "@/lib/contrast";
 import { tools } from "./tools";
 
 // Paired with --color-ink in src/index.css (update together).

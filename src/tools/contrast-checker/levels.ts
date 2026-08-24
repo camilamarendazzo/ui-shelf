@@ -3,7 +3,7 @@ import {
   WCAG_AA_NORMAL,
   WCAG_AAA_LARGE,
   WCAG_AAA_NORMAL,
-} from "../../lib/contrast";
+} from "@/lib/contrast";
 
 export interface WcagLevel {
   label: string;

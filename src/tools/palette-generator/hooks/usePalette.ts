@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { Rgb } from "../../../lib/color";
+import type { Rgb } from "@/lib/color";
 import { generatePalette } from "../combinations";
 import type { Combination } from "../combinations";
 

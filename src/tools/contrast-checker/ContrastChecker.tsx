@@ -1,10 +1,10 @@
-import { tools } from "../../data/tools";
-import { formatHex } from "../../lib/color";
+import { tools } from "@/data/tools";
+import { formatHex } from "@/lib/color";
 import {
   adjustLightnessToPass,
   contrastRatio,
   WCAG_AAA_NORMAL,
-} from "../../lib/contrast";
+} from "@/lib/contrast";
 import ColorField from "./components/ColorField";
 import ResultPanel from "./components/ResultPanel";
 import Showcase from "./components/Showcase";

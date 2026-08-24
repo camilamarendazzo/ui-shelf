@@ -1,5 +1,5 @@
-import { formatHex, parseHex } from "../../../lib/color";
-import type { Rgb } from "../../../lib/color";
+import { formatHex, parseHex } from "@/lib/color";
+import type { Rgb } from "@/lib/color";
 
 interface Suggestion {
   hex: string;
