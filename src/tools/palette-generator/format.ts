@@ -1,5 +1,5 @@
-import { formatHex, formatHsl, formatRgb } from "../../lib/color";
-import type { Rgb } from "../../lib/color";
+import { formatHex, formatHsl, formatRgb } from "@/lib/color";
+import type { Rgb } from "@/lib/color";
 
 export const FORMATS = ["hex", "rgb", "hsl"] as const;
 export type ColorFormat = (typeof FORMATS)[number];

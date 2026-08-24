@@ -1,6 +1,6 @@
 import { CircleHelp } from "lucide-react";
-import Chip from "../../../components/ui/Chip";
-import { formatRatio } from "../../../lib/contrast";
+import Chip from "@/components/ui/Chip";
+import { formatRatio } from "@/lib/contrast";
 import { levels } from "../levels";
 
 function ResultPanel({ ratio }: { ratio: number }) {
