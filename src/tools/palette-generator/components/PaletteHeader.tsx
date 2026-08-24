@@ -5,7 +5,7 @@ import { COMBINATION_OPTIONS } from "../combinations";
 import type { Combination } from "../combinations";
 import { formatColor } from "../format";
 import type { ColorFormat } from "../format";
-import type { PaletteSwatch } from "../usePalette";
+import type { PaletteSwatch } from "../hooks/usePalette";
 import CopyButton from "./CopyButton";
 import FormatToggle from "./FormatToggle";
 

@@ -4,7 +4,7 @@ import type { Rgb } from "../../../lib/color";
 import { relativeLuminance } from "../../../lib/contrast";
 import { formatColor } from "../format";
 import type { ColorFormat } from "../format";
-import { useCopy } from "../useCopy";
+import { useCopy } from "../hooks/useCopy";
 
 function Swatch({
   rgb,

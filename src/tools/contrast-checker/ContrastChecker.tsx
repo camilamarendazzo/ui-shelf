@@ -9,7 +9,7 @@ import ColorField from "./components/ColorField";
 import ResultPanel from "./components/ResultPanel";
 import Showcase from "./components/Showcase";
 import WhyContrastMatters from "./components/WhyContrastMatters";
-import { useColorPair } from "./useColorPair";
+import { useColorPair } from "./hooks/useColorPair";
 
 const accent = tools.find((tool) => tool.name === "Contrast checker")?.color;
 
