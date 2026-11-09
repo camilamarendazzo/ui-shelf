@@ -3,6 +3,8 @@
 A collection of small, single-purpose tools for frontend developers and designers.
 Pick what you need and take it from the shelf!
 
+**Try it live:** [ui-shelf.vercel.app](https://ui-shelf.vercel.app)
+
 ## Tools
 
 | Tool                      | What it does                                                                                 | Status      |
@@ -12,6 +14,17 @@ Pick what you need and take it from the shelf!
 | Color blindness simulator | Preview colors under protanopia, deuteranopia, and tritanopia                                | Coming soon |
 
 More tools will be added as they ship.
+
+## Next steps
+
+- **Color blindness simulator**: the next tool on the shelf. Preview colors and
+  uploaded images under protanopia, deuteranopia, and tritanopia.
+- **Palette generator**
+  - Shareable URLs that restore colors, combination, and locks
+  - A contrast badge on each swatch, against black and white text
+  - Export a palette as PNG or JSON
+
+Ideas or bugs? [Open an issue](https://github.com/camilamarendazzo/ui-shelf/issues).
 
 ## Stack
 
