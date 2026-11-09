@@ -12,6 +12,11 @@ dist
 dist-ssr
 *.local
 
+# Environment files — commit a placeholder .env.example instead
+.env
+.env.*
+!.env.example
+
 # Internal planning docs — never published (see charter section 6)
 docs/
 
